@@ -353,10 +353,10 @@
   {%- if enable_filtering -%}
     {{ 'nouislider.js' | asset_url | script_tag }}
   {%- endif -%}
-  <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+  <script type="load" d-src="{{ 'facets.js' | asset_url }}"></script>
 {%- endif -%}
 
-<script> 
+<script type="load"> 
   $(document).ready(function() {
     const menu = document.querySelector(".collection-list-menu-wrapper,#dropdownCard");
     menu.addEventListener("mouseover", (event) => {

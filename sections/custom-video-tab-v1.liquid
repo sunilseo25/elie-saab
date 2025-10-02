@@ -49,7 +49,7 @@
           {% elsif block.settings.media_type == 'video_url' %}
             {%- assign url = block.settings.media_video_url | strip -%}
             <div class="video-wrapper">
-              <video id="tab-{{ forloop.index0 }}" src="{{ url }}" class="single-video-tab" autoplay muted playsinline preload="auto" style="width:100%;height:520px;object-fit:cover" controlslist="nodownload noremoteplayback" crossorigin="anonymous" ></video>
+              <video id="tab-{{ forloop.index0 }}" src="{{ url }}"  class="single-video-tab lazyvideo" muted playsinline preload="none" style="width:100%;height:520px;object-fit:cover" controlslist="nodownload noremoteplayback" crossorigin="anonymous" poster="{{ section.settings.default_media_image | image_url }}" ></video>
               {% if url contains 'youtu.be' or url contains 'youtube.com' %}
                 {%- assign id = url | replace: 'https://youtu.be/', '' | replace: 'https://www.youtube.com/watch?v=', '' | split: '&' | first -%}
                 <iframe src="https://www.youtube.com/embed/{{ id }}?autoplay=1&loop=1&mute=1&playlist={{ id }}&controls=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="single-video-tab" ></iframe>
@@ -160,7 +160,7 @@
   </div>
 </div>
 
-<script>
+<script type="load">
 jQuery(document).ready(function($) {
   const $videoTabs = $('#custom-tab-{{ section.id }} .video-tab');
   const $videoContents = $('#custom-tab-{{ section.id }} .video-tab-content');

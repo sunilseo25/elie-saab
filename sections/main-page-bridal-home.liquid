@@ -9,7 +9,7 @@
 {{ 'homepage.css' | asset_url | stylesheet_tag }}
 {{ 'interior-design.css' | asset_url | stylesheet_tag }}
 {{ 'bridal.css' | asset_url | stylesheet_tag }}
-<script>
+<script type="load">
    jQuery(document).ready(function($) {    
       function updateTabIndicator() {
             const activeTab1 = document.querySelector('.bridal-home .video-tab.active span');

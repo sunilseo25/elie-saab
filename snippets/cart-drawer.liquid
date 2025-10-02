@@ -10,7 +10,7 @@
   {{ 'country-flag.css' | asset_url | stylesheet_tag }}
 {% endcomment %}
 
-{{ 'drawer-wishlist.js' | asset_url | script_tag }}
+{{ 'drawer-wishlist.js' | asset_url | script_tag | replace: ' src' , ' d-src' | replace: ' type="text/javascript"' , ' type="lload"'}}
 {{ 'wishlist-tab.css' | asset_url | stylesheet_tag }}
 
 {%- if settings.cart_drawer -%}
@@ -222,7 +222,7 @@
                 <div class="wishlist-box" data-handle="ready-to-wear" data-tab-wishlist>
                   <div class="wishlist-image">
                     <img
-                      src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/ready-to-wear.jpg?v=1749242005"
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/ready-to-wear.jpg?v=1749242005"
                       role="presentation"
                       alt="image"
                       class=""
@@ -235,7 +235,7 @@
                 <div class="wishlist-box" data-handle="haute-couture"  data-tab-wishlist>
                   <div class="wishlist-image">
                     <img
-                      src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/wish-haute-couture.jpg?v=1749241961"
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/wish-haute-couture.jpg?v=1749241961"
                       role="presentation"
                       alt="image"
                       class=""
@@ -248,7 +248,7 @@
                 <div class="wishlist-box"  data-handle="bridal" data-tab-wishlist>
                   <div class="wishlist-image">
                     <img
-                      src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/wishlist-bridal.jpg?v=1749241640"
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/wishlist-bridal.jpg?v=1749241640"
                       role="presentation"
                       data-ac-alt-type="image"
                     />
@@ -633,7 +633,7 @@
             <slider-component class="products carousel row no-padding suggested_card">
               <div class="carousel_slide column small-6 medium-6 carousel__slide">
                 <div class="thumb_product cover_img">
-                  <img src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/rtw.jpg?v=1747864627">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/rtw.jpg?v=1747864627">
                 </div>
                 <a href="/collections/ready-to-wear-all">
                   <span>Shop</span>
@@ -642,7 +642,7 @@
               </div>
               <div class="carousel_slide column small-6 medium-6 carousel__slide">
                 <div class="thumb_product cover_img">
-                  <img src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/bags_cart.jpg?v=1747864720">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/bags_cart.jpg?v=1747864720">
                 </div>
                 <a href="/collections/handbags">
                   <span>Shop</span>
@@ -652,7 +652,7 @@
               {% unless localization.country.iso_code == 'US' %}
               <div class="carousel_slide column small-6 medium-6 carousel__slide">
                 <div class="thumb_product cover_img">
-                  <img src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/kids.jpg?v=1747864940">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/kids.jpg?v=1747864940">
                 </div>
                 <a href="/collections/kids">
                   <span>Shop</span>
@@ -662,7 +662,7 @@
               {% endunless %}
   <div class="carousel_slide column small-6 medium-6 carousel__slide">
                 <div class="thumb_product cover_img">
-                  <img src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/ES_L_Homme_1800x1000_3.jpg?v=1744150705">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="https://cdn.shopify.com/s/files/1/0605/8872/0370/files/ES_L_Homme_1800x1000_3.jpg?v=1744150705">
                 </div>
                 <a href="https://eliesaab.com/pages/lhomme">
                   <span>View</span>
@@ -684,11 +684,11 @@
     </div>
   </cart-drawer>
   {%- if settings.cart_drawer_clear -%}
-    <script src="{{ 'remove-all.js' | asset_url }}" async></script>
+    <script type="load" d-src="{{ 'remove-all.js' | asset_url }}"></script>
   {%- endif -%}
 {%- endif -%}
-<script src="{{ 'custom-predictive-search.js' | asset_url }}" defer="defer"></script>
-<script>
+<script type="load" d-src="{{ 'custom-predictive-search.js' | asset_url }}"></script>
+<script type="load">
   function switchTabinLogin() {
     let tab_main = document.querySelector("#login_account");
     if (tab_main) {

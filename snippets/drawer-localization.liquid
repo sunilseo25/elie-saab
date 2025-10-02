@@ -179,7 +179,7 @@ YER:﷼:YE,ZAR:R:ZA,ZMW:ZK:ZM,ZWL:$:ZW' | split: ',' %}
            {% for country in localization.available_countries %}
             <div class="country-inline">
               <input type="radio" id="{{ country.name | handleize }}-custom" name="country_code1" value="{{ country.iso_code }}" data-country="+355">
-              <label for="{{ country.name | handleize }}-custom" class="labelwrapper">{{ country | image_url: width: 32, height: 20 | image_tag }} {{ country.name }}</label>
+              <label for="{{ country.name | handleize }}-custom" class="labelwrapper">{{ country | image_url: width: 32, height: 20 | image_tag | replace: ' src="' , ' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-li="st" d-src="' | replace: ' srcset="' , ' dt="' }} {{ country.name }}</label>
             </div>
            {% endfor %}  
           </div>
@@ -304,7 +304,7 @@ YER:﷼:YE,ZAR:R:ZA,ZMW:ZK:ZM,ZWL:$:ZW' | split: ',' %}
     </style>
   {% endif %}
 {%- endif -%}
-<script>
+<script type="load">
   $('#countryInput').keypress(function (e) {
  var key = e.which;
  if(key == 13)  // the enter key code

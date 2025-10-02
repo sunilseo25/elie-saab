@@ -80,13 +80,12 @@
                             media.settings.media_video_file
                             | video_tag:
                               loop: true,
-                              autoplay: true,
                               controls: false,
                               muted: true,
                               sizes: '407x0,500x0',
                               image_size: '500x',
-                              class: 'custom_video',
-                              attributes: 'controlslist="nodownload noremoteplayback"'
+                              class: 'custom_video lazyvideo',
+                              attributes: 'controlslist="nodownload noremoteplayback"' | replace:'preload="metadata"','preload="none"' | replace: ' poster' , ' data-poster'
                           }}
                           {% if media.settings.media_text_explore != blank %}
                             <a href="{{ media.settings.media_url }}">
@@ -232,7 +231,7 @@
     });
    });
 </script>
-<script>
+<script type="load">
    var swiper = new Swiper(".slider-{{ section.id }}  .mySwiper", {
      slidesPerView: 4,
      spaceBetween: 5,
@@ -261,7 +260,7 @@
      }
    });
 </script>
-<script>
+<script type="load">
       jQuery(document).ready(function ($) {
             {% comment %}
             function initializeSlick() {

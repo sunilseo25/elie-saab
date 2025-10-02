@@ -10,7 +10,7 @@
 {{ 'homepage.css' | asset_url | stylesheet_tag }}
 {{ 'interior-design.css' | asset_url | stylesheet_tag }}
 {{ 'interior-home.js' | asset_url | script_tag }}
-<script>
+<script type="load">
    jQuery(document).ready(function($) {
       function updateTabIndicator() {
             const activeTab1 = document.querySelector('.interior .video-tab.active span');

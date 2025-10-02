@@ -540,9 +540,9 @@
   
 </script>
 
-<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
+<script type="load" d-src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 {%- if media_layout == 'thumbnails' -%}
-  <script src="{{ 'product-thumbnails.js' | asset_url }}" defer="defer"></script>
+  <script type="load" d-src="{{ 'product-thumbnails.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {%- if first_3d_model -%}

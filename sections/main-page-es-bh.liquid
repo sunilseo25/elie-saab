@@ -25,7 +25,7 @@
 {{ 'homepage.css' | asset_url | stylesheet_tag }}
 {{ 'interior-design.css' | asset_url | stylesheet_tag }}
 {{ 'bridal.css' | asset_url | stylesheet_tag }}
-<script>
+<script type="load">
    jQuery(document).ready(function($) {    
       let currentIndex = 0;
       const tabsvideo = document.querySelectorAll(".bridal-home .video-tab");
@@ -215,7 +215,7 @@ if(window.innerWidth > 769){
 
 
 
-<script data-main>
+<script data-main type="load">
    
  if (window.innerWidth <= 768) {
 

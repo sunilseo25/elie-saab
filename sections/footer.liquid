@@ -343,7 +343,7 @@
   </div>
 </footer>
   
-<script >
+<script type="load" >
     function  switchCurrencyAuto(){
     let savedCountry = localStorage.getItem('selectedCountry')??"US";
      let currencyCode_ = $("#currency--selector option[value^='"+savedCountry+"|']").val();
@@ -366,7 +366,7 @@
   }
   switchCurrencyAuto();
 </script>
-<script>   
+<script type="load">   
     const trackOrderLink = document.querySelector('.track-order-link');
     if (trackOrderLink) {
       trackOrderLink.addEventListener('click', function (e) {
@@ -441,7 +441,7 @@
   });
 </script>
 
-  <script src="{{ 'localization.js' | asset_url }}" defer="defer"></script>
+  <script type="load" d-src="{{ 'localization.js' | asset_url }}"></script>
 {% schema %}
 {
   "name": "Footer",

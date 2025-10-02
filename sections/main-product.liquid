@@ -388,9 +388,9 @@
   <link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
-<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
+<script type="load" d-src="{{ 'product.js' | asset_url }}" defer="defer"></script>
 {%- if media_layout == 'thumbnails' -%}
-  <script src="{{ 'product-thumbnails.js' | asset_url }}" defer="defer"></script>
+  <script type="load" d-src="{{ 'product-thumbnails.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {%- if first_3d_model -%}
@@ -403,7 +403,7 @@
 <script type="application/ld+json">
   {{ product | structured_data }}
 </script>
-<script>
+<script type="load">
          $("body").on("click", "#js-back-link", function (e) {
     const currentLink = e.currentTarget.dataset.link;
               console.log("currentlink",currentLink)

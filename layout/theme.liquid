@@ -9,9 +9,10 @@
 {%- endcapture -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
   <head>
+    {% render 'head-content' %}
 
     <!-- Google Tag Manager -->
-    <script  type="lazyload2">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script  type="load">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -93,9 +94,9 @@
 
 
   <!-- OSANO for ELIE SAAB -->
-     <script  type="lazyload2" data-src="https://cmp.osano.com/169kYhTLToBKb28oY/0a834570-b9ea-4be2-bc5a-e4906c1d10ac/osano.js"></script>
+     <script  type="load" d-src="https://cmp.osano.com/169kYhTLToBKb28oY/0a834570-b9ea-4be2-bc5a-e4906c1d10ac/osano.js"></script>
     <!-- Hotjar Tracking Code for ELIE SAAB -->
-<script type="lazyload2">
+<script type="load">
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:5153228,hjsv:6};
@@ -139,7 +140,15 @@
         }
       };
     </script>
-{{ content_for_header }}
+      {%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
+        {{ content_for_header }}
+      {%- else -%}
+        {% capture content_for_header2 %}{{ content_for_header }}{% endcapture %}
+        {{ content_for_header2 | replace: ' async="async" ', ' type="load" ' | replace: ' defer="defer" ', ' type="load" ' | replace: " src=", " d-src=" | replace: "DOMContentLoaded", "xDOMContentLoaded" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('xDOMContentLoaded', asyncLoad, false);" | replace: "addEventListener('load', prefetchAssets);", "addEventListener('xDOMContentLoaded', prefetchAssets);" | replace: "type='text/javascript' async=''", "type='load' " | replace: 'type="module" d-', 'dxt="module" type="load" d-' | replace: 'async dxt="module" type="load"', 'dxt="module"' | replace: '<script type="module">', '<script dxt="module" type="load">' | replace: "type='text/javascript' defer='defer' d-src", "type='load' d-src" | replace: '<script>', '<script type="load">' | replace: 'type="load" d-src="https://shop.app/checkouts/internal/preloads.js', 'type="lload" d-src="https://shop.app/checkouts/internal/preloads.js' }}
+        <script>
+          var trekkie=[];trekkie.integrations=!0;window.BOOMR={},window.BOOMR.version=true;
+        </script>
+      {%- endif -%}
     <!-- Header hook for plugins -->
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -250,6 +259,8 @@
              }
            </style>
       {% endif %}
+    {% render 'app-block' %}
+    {% render 'custom-css1' %}
   </head>
   <body
     class="no-js-body {% if template contains 'use-es-mbp-' %}template-page-monaco-boutique{% endif %} {% if template contains 'use-es-bouh-' %}template-page-boutiques-home{% endif %} {% if template contains 'use-es-rtwsh-' %}template-page-rtw-shows-page{% endif %} {% if template contains 'use-es-hch-' %}template-page-haute-couture-home{% endif %} {% if template contains 'bridal-spring-summer-' %}template-page-bridal-home{% endif %} {% if template contains 'bridal-spring-' %}template-page-bridal-home{% endif %} {% if template contains 'bridal-fall-' %}template-page-bridal-home{% endif %} {% if template contains 'es-bh' %}template-page-bridal-home{% endif %} {% if template contains 'use-es-bh-' %}template-page-bridal-home{% endif %}  animations-{{ settings.animations }} button-uppercase-{{ settings.button_uppercase }} navigation-uppercase-{{ settings.navigation_uppercase }} product-card-spacing-{{ settings.product_card_spacing }} product-title-uppercase-{{ settings.product_title_uppercase }}{% if customer %} customer-logged-in{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}"
@@ -521,7 +532,7 @@ let USDollar = new Intl.NumberFormat('en-US', {
    {{ 'tracktor.css' | asset_url | stylesheet_tag }}
       {% endif %}
     <div id="wrapper">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js?v=165519143715454352281756116300"></script>
+      <script type="load" d-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js?v=165519143715454352281756116300"></script>
       {%- sections 'header-group' -%}
       
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css?v=165519143715454352281756116300">
@@ -530,9 +541,9 @@ let USDollar = new Intl.NumberFormat('en-US', {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?v=165519143715454352281756116300">
     
     
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js?v=165519143715454352281756116300"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?v=165519143715454352281756116300"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js?v=165519143715454352281756116300"></script>
+    <script type="load" d-src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js?v=165519143715454352281756116300"></script>
+    <script type="load" d-src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?v=165519143715454352281756116300"></script>
+    <script type="load" d-src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js?v=165519143715454352281756116300"></script>
 
       {%- sections 'overlay-group' -%}
       <div role="main" id="main-content">
@@ -544,10 +555,10 @@ let USDollar = new Intl.NumberFormat('en-US', {
       {% render 'search-drawer' %}
       <div class="click-capture"></div>
     </div>
-	{{ 'vendor.min.js' | asset_url | script_tag }}
+	{{ 'vendor.min.js' | asset_url | script_tag | replace: ' src' , ' d-src' | replace: ' type="text/javascript"' , ' type="load"'}}
     {% if settings.animations %}
- <script src="//elie-saab-switzerland.myshopify.com/cdn/shop/t/156/assets/animations.min.js?v=125778792411641688251747899799" type="text/javascript"></script>
-      <script>
+ <script type="load" d-src="//elie-saab-switzerland.myshopify.com/cdn/shop/t/156/assets/animations.min.js?v=125778792411641688251747899799" type="text/javascript"></script>
+      <script type="load">
         gsap.defaults({
         	ease: Power4.easeOut
         });
@@ -557,11 +568,11 @@ let USDollar = new Intl.NumberFormat('en-US', {
         gsap.registerPlugin(ScrollTrigger);
       </script>
     {% endif %}
-    {{ 'app.js' | asset_url | script_tag }}
-     <script src="{{ 'slideshow.js' | asset_url }}" defer></script>   
+    {{ 'app.js' | asset_url | script_tag | replace: ' src' , ' d-src' | replace: ' type="text/javascript"' , ' type="load"'}}
+     <script type="load" d-src="{{ 'slideshow.js' | asset_url }}" ></script>   
 
-     <script src="{{ 'wishlist.js' | asset_url }}" defer></script>
-    {{ 'custom.js'| asset_url | script_tag }}
+     <script type="load" d-src="{{ 'wishlist.js' | asset_url }}" ></script>
+    {{ 'custom.js'| asset_url | script_tag | replace: ' src' , ' d-src' | replace: ' type="text/javascript"' , ' type="load"' }}
     {%- liquid
       assign add_product_js = false
       if settings.enable_quick_view or settings.enable_quick_add
@@ -575,8 +586,8 @@ let USDollar = new Intl.NumberFormat('en-US', {
     {% if add_product_js %}
       <script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
     {% endif %}
-    <script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    <script dxt="module" type="load" d-src="{{ 'scroll-shadow.js' | asset_url }}"></script>
+    <script type="load" d-src="{{ 'predictive-search.js' | asset_url }}"></script>
     {%- if request.design_mode -%}
       {{ 'theme-editor.js' | asset_url | script_tag }}
       {% render 'customer-data' %}
@@ -586,20 +597,20 @@ let USDollar = new Intl.NumberFormat('en-US', {
       {{ 'free-shipping.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
     {%- if settings.cart_recommendations -%}
-      <script src="{{ 'product-recommendations.js' | asset_url }}" defer="defer"></script>
+      <script type="load" d-src="{{ 'product-recommendations.js' | asset_url }}"></script>
     {%- endif -%}
     {%- if settings.cart_terms_conditions_enable -%}
-      <script src="{{ 'terms-checkbox.js' | asset_url }}" defer="defer"></script>
+      <script type="load" d-src="{{ 'terms-checkbox.js' | asset_url }}"></script>
     {%- endif -%}
     {% render 'back-to-top' %}
 
     {%- if settings.preload_links -%}
       {%- unless request.design_mode -%}
-        <script type="module" src="{{ 'instant-page.js' | asset_url }}" defer="defer"></script>
+        <script dxt="module" type="load" d-src="{{ 'instant-page.js' | asset_url }}"></script>
       {%- endunless -%}
     {%- endif -%}
  
-    <script>     
+    <script type="load">     
       if (window.innerWidth < 749) {
        $(".filter_btn,span.facets-toggle").on("click", function() {
         $("facetfiltersformmobile").toggleClass("active");
@@ -1125,7 +1136,7 @@ let USDollar = new Intl.NumberFormat('en-US', {
       });
     </script>
 
-    <script>
+    <script type="load">
         document.addEventListener("DOMContentLoaded", function() {
          document.querySelectorAll(".dropdown_item").forEach((dropdown) => {
           const dropdownToggle = dropdown.querySelector(".subcollection_dropdown");
@@ -1193,7 +1204,7 @@ let USDollar = new Intl.NumberFormat('en-US', {
 
  
 
-        <script>
+        <script type="load">
 document.addEventListener('click', function(event) {
  if (!event.isTrusted) return;
   const openMenus = document.querySelectorAll('details.coutnryselector[open]');
@@ -1206,7 +1217,7 @@ document.addEventListener('click', function(event) {
 });
     </script>
  
-    <script>
+    <script type="lload">
             $(document).ready(function() {
         // Attach click event to anchor tags inside .collapsible__content .accordion__content
         $('.template-page-faq .collapsible__content.accordion__content p a').click(function() {
@@ -1224,7 +1235,7 @@ document.addEventListener('click', function(event) {
       });
     </script>
 
-    <script>
+    {% comment %} <script>
 var windowWidth,lazyLink,lazyImages,lazyBackground,lazyIframe,lazyVideo,lazyScripts,navigator_platform,lazyLoadedJS,src,style,datasrc,urls,analytics,s,x,i,j,flag;function init(){flag&&(flag=0,lazyLoadImg(),lazyLoadBackground(),lazyLoadIframe(),load_all_js())}function isElementInViewport(t){var a=t.getBoundingClientRect();return a.top>=0&&a.left>=0&&a.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&a.right<=(window.innerWidth||document.documentElement.clientWidth)}function lazyLoadLink(){lazyLink.forEach(function(t){t.href=null==t.dataset.href?t.href:t.dataset.href})}function lazyLoadImg(){lazyImages.forEach(function(t){null!=(src=windowWidth<600?null==t.dataset.mobsrc?t.dataset.src:t.dataset.mobsrc:t.dataset.src)&&(t.src=src),t.classList.remove("lazy2")})}function lazyLoadImg2(){lazyImages.forEach(function(t){isElementInViewport(t)&&(null!=(src=windowWidth<600?null==t.dataset.mobsrc?t.dataset.src:t.dataset.mobsrc:t.dataset.src)&&(t.src=src),t.classList.remove("lazy"))})}function lazyLoadBackground(){lazyBackground.forEach(function(t){lazybg=windowWidth<600?null==t.dataset.mobstyle?t.dataset.style:t.dataset.mobstyle:t.dataset.style,null!=lazybg&&(t.style=lazybg),t.classList.remove("lazybg")})}function lazyLoadIframe(){lazyIframe.forEach(function(t){t.src=null==t.dataset.src?t.src:t.dataset.src});lazyVideo.forEach(function(t){t.src=null==t.dataset.src?t.src:t.dataset.src})}function lazyLoadScripts(){j!=lazyScripts.length&&("lazyload2"==lazyScripts[j].getAttribute("type")?(lazyScripts[j].setAttribute("type","lazyloaded"),void 0!==lazyScripts[j].dataset.src?((s=document.createElement("script")).src=lazyScripts[j].dataset.src,document.body.appendChild(s),s.onload=function(){j++,lazyLoadScripts()}):((s=document.createElement("script")).innerHTML=lazyScripts[j].innerHTML,document.body.appendChild(s),j++,lazyLoadScripts())):(j++,lazyLoadScripts()))}function lazyLoadCss(t){(s=document.createElement("link")).rel="stylesheet",s.href=t,document.getElementsByTagName("head")[0].appendChild(s)}function lazyLoadJS(t){if(lazyLoadedJS)return setTimeout(function(){lazyLoadJS(t)},200),!1;lazyLoadedJS=1,(s=document.createElement("script")).src=t,s.onload=function(){lazyLoadedJS=0},document.body.appendChild(s)}document.addEventListener("DOMContentLoaded",function(){windowWidth=screen.width,lazyLink=document.querySelectorAll("link"),lazyImages=document.querySelectorAll("img.lazy2"),nolazyImages=document.querySelectorAll("img.lazy"),lazyBackground=document.querySelectorAll(".lazybg"),lazyIframe=document.querySelectorAll("iframe"),lazyVideo=document.querySelectorAll("source"),lazyScripts=document.getElementsByTagName("script"),navigator_platform=navigator.platform,i=0,j=0,flag=1,window.addEventListener("scroll",function(){init()}),window.addEventListener("mousemove",function(){init()}),window.addEventListener("touchstart",function(){init()}),"Linux x86_64"!=navigator_platform&&init(),setTimeout(function(){init()},60000)});
 
 function load_all_js() {
@@ -1257,20 +1268,20 @@ setTimeout(function() {
 		lazyLoadBackground();
 	}, 2000);
 }
-</script>
+</script> {% endcomment %}
   {% comment %} {% endcomment %}
     {% render 'osano-shopify' %}
 
     <!-- INTERCOM  -->
 
-    <script>
+    <script type="load">
       window.intercomSettings = {
         api_base: "https://api-iam.eu.intercom.io",
         app_id: "ljliy5ex",
         custom_launcher_selector:'#my_custom_svg',
       };
     </script>
-        <script>
+        <script type="load">
       // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/ljliy5ex'
       (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ljliy5ex';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
       Intercom('boot',{hide_default_launcher:true});
@@ -1309,6 +1320,8 @@ setTimeout(function() {
         });
       </script>
     {% endif %}
+    {% render 'footer-app-block' %}
+    {% render 'foot-content' %}
 
   </body>
 </html>

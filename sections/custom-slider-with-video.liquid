@@ -96,13 +96,12 @@
                           block.settings.media_video_file
                           | video_tag:
                             loop: true,
-                            autoplay: true,
                             controls: false,
                             muted: true,
                             sizes: '407x0,500x0',
                             image_size: "500x",
-                            class: 'custom-video',
-                            attributes: 'controlslist="nodownload noremoteplayback"'
+                            class: 'custom-video lazyvideo',
+                            attributes: 'controlslist="nodownload noremoteplayback"' | replace:'preload="metadata"' , 'preload="none"' | replace: 'poster','data-poster'
                         }}
                       {% endif %}
                   {% endcase %}
@@ -130,8 +129,7 @@
   </div>
 </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+<script type="load">
   $('.slider--{{ section.id }} .custom-slick-slider').slick({
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -165,7 +163,6 @@
     ]
   });
 
-    });
 </script>
 
 {% schema %}

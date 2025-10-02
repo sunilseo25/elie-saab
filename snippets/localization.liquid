@@ -54,7 +54,7 @@
 		{%- endif -%}
 	{%- endform -%}
 </localization-form>
-<script src="{{ 'localization.js' | asset_url }}" defer="defer"></script>
+<script type="load" d-src="{{ 'localization.js' | asset_url }}"></script>
 {%- if show_language_switcher -%}
 <script>
   document.addEventListener("DOMContentLoaded", function () {

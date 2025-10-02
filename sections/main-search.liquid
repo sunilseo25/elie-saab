@@ -117,7 +117,7 @@
   {%- if enable_filtering -%}
     {{ 'facets.css' | asset_url | stylesheet_tag }}
     {{ 'nouislider.js' | asset_url | script_tag }}
-    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+    <script type="load" d-src="{{ 'facets.js' | asset_url }}"></script>
   {%- endif -%}
 
 {%- endif -%}

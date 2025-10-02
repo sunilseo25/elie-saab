@@ -56,7 +56,7 @@
       }
 	{%- endstyle -%}
 </theme-header>
-{{- 'header.js' | asset_url | script_tag -}}
+{{- 'header.js' | asset_url | script_tag | replace: ' src' , ' d-src' | replace: ' type="text/javascript"' , ' type="load"'-}}
 <style>
    /* @media (min-width:768px){
     .st-wishlist-details-button{

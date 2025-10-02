@@ -71,7 +71,11 @@
             {%- render 'svg-icons' with 'zoom' -%}
           </a>
         {%- endif -%}
-        {%- render 'responsive-image', image: media.preview_image, sizes: sizes, priority: priority -%}
+        {% if forloop.first %}
+          {%- render 'pre-responsive-image', image: media.preview_image, sizes: sizes, priority: priority -%}
+        {% else %}
+          {%- render 'responsive-image', image: media.preview_image, sizes: sizes, priority: priority -%}
+        {% endif %}
         {%- if alt != blank and display_captions -%}
           <span class="figcaption">{{ alt }}</span>
         {%- endif -%}
